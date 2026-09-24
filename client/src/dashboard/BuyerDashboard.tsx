@@ -12,12 +12,11 @@ import Layout, { PageTitle, Stat } from './Layout';
 import OrderCard from './OrderCard';
 import { KycBanner, ProfilePanel, ReviewModal, setOrderStatus } from './shared';
 
-// Mirrors the API default (PENDING_ORDER_TTL_HOURS); /payments/config reports the live value.
-const PENDING_TTL_HOURS = 24;
-
 export default function BuyerDashboard({ user, tab }: { user: User; tab: string }) {
   const orders = useAsync(() => api<Order[]>('/orders/mine'));
   const reviews = useAsync(() => api<{ productId: string }[]>('/reviews/mine'));
+  const payConfig = useAsync(() => api<{ paystack: boolean; pendingOrderTtlHours: number }>('/payments/config'));
+  const ttl = payConfig.data?.pendingOrderTtlHours;
   const [reviewing, setReviewing] = useState<{ id: string; name: string } | null>(null);
   const [busyId, setBusyId] = useState('');
   const [toast, showToast] = useToast();
@@ -43,7 +42,7 @@ export default function BuyerDashboard({ user, tab }: { user: User; tab: string 
   }
 
   const renderOrders = (items: Order[]) => items.map((o) => <OrderCard key={o.id} order={o}
-    actions={o.status === 'PENDING' ? <><p className="w-full text-xs text-slate-500">Stock is reserved for you. Unpaid orders are cancelled automatically after {PENDING_TTL_HOURS} hours.</p><Button busy={busyId === `pay:${o.id}`} disabled={!!busyId} onClick={() => pay(o)}>Pay now</Button><Button variant="danger" busy={busyId === o.id} disabled={!!busyId} onClick={() => cancel(o)}>Cancel order</Button></> : undefined}
+    actions={o.status === 'PENDING' ? <><p className="w-full text-xs text-slate-500">Stock is reserved for you. {ttl ? `Unpaid orders are cancelled automatically after ${ttl} hour${ttl === 1 ? '' : 's'}.` : 'Unpaid orders are cancelled automatically.'}</p><Button busy={busyId === `pay:${o.id}`} disabled={!!busyId} onClick={() => pay(o)}>Pay now</Button><Button variant="danger" busy={busyId === o.id} disabled={!!busyId} onClick={() => cancel(o)}>Cancel order</Button></> : undefined}
     itemAction={o.status === 'DELIVERED' ? (i) => reviewed.has(i.productId) ? <span className="text-xs text-green-700">Reviewed</span> : <Button variant="secondary" className="px-3 py-1.5 text-xs" onClick={() => setReviewing({ id: i.productId, name: i.product.name })}>Review</Button> : undefined} />);
 
   const tabs = [
