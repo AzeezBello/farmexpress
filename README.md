@@ -98,9 +98,9 @@ All use the password `Password123!`.
 
 ### Order lifecycle
 ```
-PENDING ──Paystack (or admin, offline)──▶ PAID ──farmer──▶ CONFIRMED ──farmer──▶ SHIPPED ──farmer──▶ DELIVERED
-   │                                  │                  │
-   └─ buyer, admin or expiry ─────────────────┴─ admin cancels ──┘   (cancelling restocks inventory)
+PENDING ──Paystack or admin (offline)──▶ PAID ──farmer──▶ CONFIRMED ──farmer──▶ SHIPPED ──farmer──▶ DELIVERED
+   │                                      │                   │
+   └─ buyer, admin or expiry cancels ─────┴─ admin cancels ───┘   (cancelling restocks inventory)
 ```
 - Stock is reserved atomically when an order is placed, so concurrent orders can't oversell.
 - Prices and totals are calculated on the server; the client never sends prices.
@@ -196,13 +196,38 @@ server/
     lib/                 HTTP errors, token helpers, Paystack client
 ```
 
+## Deployment
+
+### Web app → Vercel
+The root `vercel.json` makes Vercel install and build only the client:
+
+| Setting | Value |
+| --- | --- |
+| Install command | `npm ci --prefix client` |
+| Build command | `npm --prefix client run build` |
+| Output directory | `client/dist` |
+
+Leave the project's Root Directory at the repository root. In the Vercel project settings, set **`VITE_API_URL`** to your deployed API, e.g. `https://api.example.com/api`. Vite bakes it in at build time, so redeploy after changing it. Without it, the site calls `localhost` and shows the demo marketplace.
+
+The app uses hash routes, so no rewrite rules are needed.
+
+### API → Railway / Render
+The Express API is a long-running server (it runs the order-expiry job), so host it on Railway, Render or similar, not Vercel functions.
+- Root directory: `server`
+- Build: `npm ci && npx prisma generate && npm run build`
+- Start: `npx prisma migrate deploy && npm start`
+- Environment: `DATABASE_URL`, `JWT_SECRET`, `NODE_ENV=production`, `CLIENT_URL` (your Vercel URL), `APP_URL`, `PAYSTACK_SECRET_KEY`
+
+`prisma migrate deploy` only applies committed migrations. Before the first API deploy, run `npx prisma migrate dev --name init` locally and commit `server/prisma/migrations/`.
+
 ## Troubleshooting
 - **`Missing required environment variable JWT_SECRET`**: create `server/.env` from `.env.example` and set `JWT_SECRET`.
+- **Vercel build fails with `tsc: command not found`**: the client dependencies weren't installed. Make sure `vercel.json` is committed and no Install/Build Command overrides are set in the Vercel dashboard.
 - **Storefront shows "Demo marketplace — API offline"**: the API isn't reachable at `VITE_API_URL`. Check that it's running and that `CLIENT_URL` includes the web app's origin.
 - **`@prisma/client did not initialize yet`**: run `npx prisma generate` in `server/`.
 - **Farmer can't add products**: the account is awaiting verification. Approve it from the admin dashboard under **Users & KYC**.
 - **"Too many attempts"**: the login rate limit was hit. Wait up to 15 minutes or restart the API.
-- **Buyer paid but the order still says "Awaiting payment"**: the webhook isn't reaching the API (check the webhook URL in Paystack and the API logs). The buyer can also reload after the redirect, which re-verifies the payment. As a last resort an admin can use **Mark paid (offline)** after checking the payment in Paystack.
+- **Buyer paid but the order still says "Awaiting payment"**: the webhook isn't reaching the API (check the webhook URL in Paystack and the API logs). The redirect back from Paystack confirms payments on its own, so this usually means the buyer closed the tab before being redirected. Check the payment in the Paystack dashboard, then an admin can use **Mark paid (offline)**.
 - **"Online payment is not available yet"**: `PAYSTACK_SECRET_KEY` isn't set on the API.
 - **Paystack returns buyers to the wrong site**: set `APP_URL`.
 
@@ -223,5 +248,4 @@ server/
 4. Product image upload (listings take an image URL today)
 5. Pagination and an admin audit log
 6. Automated tests in CI
-7. Deploy the web app to Vercel and the API to Railway or Render
-# farmexpress
+7. Deploy the API to Railway or Render and commit the initial Prisma migration (the web app deploys to Vercel via `vercel.json`)

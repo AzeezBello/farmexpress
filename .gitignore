@@ -24,3 +24,6 @@ next-env.d.ts
 # `git rm --cached CLAUDE.md`, which stops tracking it while leaving the local copy alone.
 CLAUDE.md
 .claude/
+
+# build output
+dist/
