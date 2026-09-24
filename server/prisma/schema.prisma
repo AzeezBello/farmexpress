@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  FARMER
+  BUYER
+  INDUSTRY
+  ADMIN
+}
+
+enum KycStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum DeliveryOption {
+  DELIVERY
+  PICKUP
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESSFUL
+  FAILED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(BUYER)
+  businessName String?
+  farmLocation String?
+  kycStatus    KycStatus @default(PENDING)
+  createdAt    DateTime  @default(now())
+  products     Product[]
+  orders       Order[]   @relation("BuyerOrders")
+  reviews      Review[]
+}
+
+model Product {
+  id          String      @id @default(uuid())
+  farmerId    String
+  farmer      User        @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  name        String
+  description String
+  price       Decimal     @db.Decimal(12, 2)
+  quantity    Int
+  category    String
+  imageUrl    String?
+  location    String?
+  isActive    Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  orderItems  OrderItem[]
+  reviews     Review[]
+
+  @@index([category])
+  @@index([farmerId])
+  @@index([isActive])
+}
+
+model Order {
+  id              String         @id @default(uuid())
+  buyerId         String
+  buyer           User           @relation("BuyerOrders", fields: [buyerId], references: [id])
+  totalPrice      Decimal        @db.Decimal(12, 2)
+  status          OrderStatus    @default(PENDING)
+  deliveryOption  DeliveryOption
+  deliveryAddress String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  items           OrderItem[]
+  payment         Payment?
+
+  @@index([buyerId])
+  @@index([status])
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Decimal @db.Decimal(12, 2)
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  orderId       String        @unique
+  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount        Decimal       @db.Decimal(12, 2)
+  currency      String        @default("NGN")
+  paymentMethod String
+  status        PaymentStatus @default(PENDING)
+  reference     String?       @unique
+  transactionId String?
+  channel       String?
+  paidAt        DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  buyerId   String
+  productId String
+  buyer     User     @relation(fields: [buyerId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+
+  @@unique([buyerId, productId])
+}

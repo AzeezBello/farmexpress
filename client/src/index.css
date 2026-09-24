@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Tailwind v4 defaults border-color to currentColor; restore the soft v3-style default the UI was designed with. */
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button { border-color: var(--color-slate-200, currentColor); }
+}
+
+:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #f8faf7; color: #132017; }
+body { margin: 0; }
