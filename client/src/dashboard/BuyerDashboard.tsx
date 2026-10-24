@@ -7,10 +7,12 @@ import { navigate, useToast } from '../lib/hooks';
 import type { Order, User } from '../lib/types';
 import { useAsync } from '../lib/useAsync';
 import Toast from '../components/Toast';
-import { Button, Empty, ErrorText, Spinner } from '../components/ui';
+import { Button, Empty, ErrorText, Pagination, Spinner } from '../components/ui';
 import Layout, { PageTitle, Stat } from './Layout';
 import OrderCard from './OrderCard';
 import { KycBanner, ProfilePanel, ReviewModal, setOrderStatus } from './shared';
+
+const ORDERS_PER_PAGE = 6;
 
 export default function BuyerDashboard({ user, tab }: { user: User; tab: string }) {
   const orders = useAsync(() => api<Order[]>('/orders/mine'));
@@ -19,6 +21,7 @@ export default function BuyerDashboard({ user, tab }: { user: User; tab: string 
   const ttl = payConfig.data?.pendingOrderTtlHours;
   const [reviewing, setReviewing] = useState<{ id: string; name: string } | null>(null);
   const [busyId, setBusyId] = useState('');
+  const [page, setPage] = useState(1);
   const [toast, showToast] = useToast();
   const list = orders.data ?? [];
   const reviewed = new Set((reviews.data ?? []).map((r) => r.productId));
@@ -51,20 +54,25 @@ export default function BuyerDashboard({ user, tab }: { user: User; tab: string 
     { id: 'profile', label: 'Profile', icon: <UserRound size={18} /> },
   ];
 
+  const totalPages = Math.max(1, Math.ceil(list.length / ORDERS_PER_PAGE));
+  const safePage = Math.min(page, totalPages);
+  const pagedOrders = list.slice((safePage - 1) * ORDERS_PER_PAGE, safePage * ORDERS_PER_PAGE);
+
   let body;
   if (tab === 'profile') body = <ProfilePanel user={user} />;
   else if (orders.loading && !orders.data) body = <Spinner />;
   else if (tab === 'orders') body = <>
     <PageTitle title="My orders" text="Track and manage everything you've ordered." />
     <ErrorText>{orders.error}</ErrorText>
-    <div className="grid gap-4 xl:grid-cols-2">{list.length ? renderOrders(list) : <Empty title="No orders yet" text="Your orders will appear here." action={<Button onClick={() => navigate('')}>Browse produce</Button>} />}</div>
+    <div className="grid gap-4 xl:grid-cols-2">{pagedOrders.length ? renderOrders(pagedOrders) : <Empty title="No orders yet" text="Your orders will appear here." action={<Button onClick={() => navigate('')}>Browse produce</Button>} />}</div>
+    <Pagination page={safePage} totalPages={totalPages} total={list.length} pageSize={ORDERS_PER_PAGE} onPageChange={setPage} />
   </>;
   else body = <>
     <PageTitle title={`Hello, ${user.name.split(' ')[0]}`} text="Your FarmExpress activity at a glance." />
-    {user.role === 'INDUSTRY' && <KycBanner status={user.kycStatus} role={user.role} />}
+    {user.role === 'INDUSTRY' && <KycBanner status={user.kycStatus} role={user.role} note={user.kycNote} />}
     <ErrorText>{orders.error}</ErrorText>
     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      <Stat label="Total spent" value={naira(list.filter((o) => !['PENDING', 'CANCELLED'].includes(o.status)).reduce((s, o) => s + Number(o.totalPrice), 0))} hint="Paid orders" />
+      <Stat label="Total spent" value={naira(list.filter((o) => !['PENDING', 'CANCELLED'].includes(o.status) && o.payment?.status !== 'REFUNDED').reduce((s, o) => s + Number(o.totalPrice), 0))} hint="Paid orders" />
       <Stat label="Orders" value={list.length} />
       <Stat label="In progress" value={active.length} />
       <Stat label="Reviews written" value={<span className="inline-flex items-center gap-1">{reviewed.size}<Star size={18} className="fill-amber-400 text-amber-400" /></span>} />

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Minus, Plus, X } from 'lucide-react';
+import { resolveAssetUrl } from '../lib/api';
 import type { CartLine } from '../lib/cart';
 import { naira } from '../lib/format';
 import { FALLBACK_IMAGE } from './ProductCard';
@@ -12,7 +13,7 @@ export default function CartDrawer({ lines, total, onClose, onChange, onCheckout
       <div className="flex-1 space-y-4 overflow-y-auto px-5 pb-5">
         {lines.length === 0 ? <div className="rounded-2xl bg-slate-50 p-8 text-center text-sm text-slate-500">Your cart is empty.</div> : lines.map(({ product, qty }) =>
           <div className="flex gap-3 rounded-2xl border p-3" key={product.id}>
-            <img src={product.imageUrl || FALLBACK_IMAGE} alt="" className="h-20 w-20 rounded-xl object-cover" />
+            <img src={resolveAssetUrl(product.imageUrl) || FALLBACK_IMAGE} alt="" className="h-20 w-20 rounded-xl object-cover" />
             <div className="min-w-0 flex-1">
               <b className="block truncate">{product.name}</b>
               <span className="text-sm text-slate-500">{naira(product.price)} each</span>

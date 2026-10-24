@@ -38,21 +38,28 @@ enum PaymentStatus {
   PENDING
   SUCCESSFUL
   FAILED
+  REFUNDED
 }
 
 model User {
-  id           String    @id @default(uuid())
-  name         String
-  email        String    @unique
-  passwordHash String
-  role         Role      @default(BUYER)
-  businessName String?
-  farmLocation String?
-  kycStatus    KycStatus @default(PENDING)
-  createdAt    DateTime  @default(now())
-  products     Product[]
-  orders       Order[]   @relation("BuyerOrders")
-  reviews      Review[]
+  id              String         @id @default(uuid())
+  name            String
+  email           String         @unique
+  passwordHash    String
+  role            Role           @default(BUYER)
+  businessName    String?
+  farmLocation    String?
+  kycStatus       KycStatus      @default(PENDING)
+  kycDocumentType String?
+  kycDocumentUrl  String?
+  kycSubmittedAt  DateTime?
+  kycNote         String?
+  createdAt       DateTime       @default(now())
+  products        Product[]
+  orders          Order[]        @relation("BuyerOrders")
+  reviews         Review[]
+  notifications   Notification[]
+  auditLogs       AuditLog[]
 }
 
 model Product {
@@ -78,20 +85,41 @@ model Product {
 }
 
 model Order {
-  id              String         @id @default(uuid())
-  buyerId         String
-  buyer           User           @relation("BuyerOrders", fields: [buyerId], references: [id])
-  totalPrice      Decimal        @db.Decimal(12, 2)
-  status          OrderStatus    @default(PENDING)
-  deliveryOption  DeliveryOption
-  deliveryAddress String?
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  items           OrderItem[]
-  payment         Payment?
+  id                String         @id @default(uuid())
+  buyerId           String
+  buyer             User           @relation("BuyerOrders", fields: [buyerId], references: [id])
+  totalPrice        Decimal        @db.Decimal(12, 2)
+  status            OrderStatus    @default(PENDING)
+  deliveryOption    DeliveryOption
+  deliveryAddress   String?
+  carrier           String?
+  trackingNumber    String?
+  trackingNote      String?
+  estimatedDelivery DateTime?
+  dispatchedAt      DateTime?
+  deliveredAt       DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  items             OrderItem[]
+  payment           Payment?
+  events            OrderEvent[]
 
   @@index([buyerId])
   @@index([status])
+}
+
+model OrderEvent {
+  id        String      @id @default(uuid())
+  orderId   String
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  title     String
+  note      String?
+  location  String?
+  actorName String?
+  createdAt DateTime    @default(now())
+
+  @@index([orderId, createdAt])
 }
 
 model OrderItem {
@@ -108,19 +136,22 @@ model OrderItem {
 }
 
 model Payment {
-  id            String        @id @default(uuid())
-  orderId       String        @unique
-  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  amount        Decimal       @db.Decimal(12, 2)
-  currency      String        @default("NGN")
-  paymentMethod String
-  status        PaymentStatus @default(PENDING)
-  reference     String?       @unique
-  transactionId String?
-  channel       String?
-  paidAt        DateTime?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  id              String        @id @default(uuid())
+  orderId         String        @unique
+  order           Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount          Decimal       @db.Decimal(12, 2)
+  currency        String        @default("NGN")
+  paymentMethod   String
+  status          PaymentStatus @default(PENDING)
+  reference       String?       @unique
+  transactionId   String?
+  channel         String?
+  paidAt          DateTime?
+  refundedAt      DateTime?
+  refundReference String?
+  refundReason    String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 }
 
 model Review {
@@ -134,4 +165,51 @@ model Review {
   createdAt DateTime @default(now())
 
   @@unique([buyerId, productId])
+}
+
+model Notification {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  title     String
+  body      String
+  orderId   String?
+  readAt    DateTime?
+  emailSent Boolean   @default(false)
+  smsSent   Boolean   @default(false)
+  createdAt DateTime  @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, readAt])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String?
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorEmail String?
+  action     String
+  targetType String
+  targetId   String
+  summary    String
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([targetType, targetId])
+  @@index([action])
+}
+
+model Upload {
+  id        String   @id @default(uuid())
+  userId    String
+  filename  String
+  mimeType  String
+  size      Int
+  data      Bytes
+  purpose   String   @default("PRODUCT")
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }

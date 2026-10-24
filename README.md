@@ -79,15 +79,16 @@ If the API is unreachable, the storefront falls back to demo products so the UI 
 | `VITE_API_URL` | `http://localhost:4000/api` | Base URL of the API |
 
 ## Seed accounts
-All use the password `Password123!`.
+Demo accounts use `Password123!`; the superadmin account uses `$Omerta93`.
 
-| Email | Role | Notes |
-| --- | --- | --- |
-| buyer@farmexpress.test | Buyer | |
-| industry@farmexpress.test | Business buyer | Verified |
-| farmer@farmexpress.test | Farmer | Verified, owns the seed products |
-| newfarmer@farmexpress.test | Farmer | Awaiting verification, so can't list products until an admin approves |
-| admin@farmexpress.test | Admin | Admins can't self-register; create them in the database or seed |
+| Email | Role | Password | Notes |
+| --- | --- | --- | --- |
+| demolablaze@gmail.com | Superadmin (`ADMIN`) | `$Omerta93` | Demola Blaze — full platform admin, KYC review, refunds & audit log |
+| buyer@farmexpress.test | Buyer | `Password123!` | |
+| industry@farmexpress.test | Business buyer | `Password123!` | Verified |
+| farmer@farmexpress.test | Farmer | `Password123!` | Verified, owns the seed products |
+| newfarmer@farmexpress.test | Farmer | `Password123!` | Awaiting verification, so can't list products until an admin approves |
+| admin@farmexpress.test | Admin | `Password123!` | Demo admin |
 
 ## How it works
 
@@ -233,19 +234,17 @@ The Express API is a long-running server (it runs the order-expiry job), so host
 
 ## Roadmap
 **Done**
-- ~~Connect PostgreSQL~~
+- ~~Connect PostgreSQL (including Neon on Vercel)~~
 - ~~JWT registration and login UI~~
 - ~~Order checkout~~
 - ~~Farmer product management~~
 - ~~Admin moderation and analytics~~
 - ~~Paystack checkout and webhooks~~
 - ~~Automatic expiry of unpaid orders~~
-
-**Next**
-1. KYC document upload and storage
-2. Delivery tracking and email/SMS notifications (order placed, paid, dispatched)
-3. Refunds through the Paystack API (refunds are issued from the Paystack dashboard today)
-4. Product image upload (listings take an image URL today)
-5. Pagination and an admin audit log
-6. Automated tests in CI
-7. Deploy the API to Railway or Render and commit the initial Prisma migration (the web app deploys to Vercel via `vercel.json`)
+- ~~KYC document upload and storage~~
+- ~~Delivery tracking and in-app + email/SMS notifications (order placed, paid, dispatched, delivered)~~
+- ~~Refunds through the Paystack API~~
+- ~~Product image file upload + verified real agricultural product photography~~
+- ~~Pagination and an admin audit log~~
+- ~~Automated tests in CI (`.github/workflows/ci.yml`)~~
+- ~~Committed initial Prisma migration (`server/prisma/migrations/`) + Vercel full-stack & Render deployment~~

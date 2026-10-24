@@ -1,21 +1,39 @@
 import { Router } from 'express';
 import { z } from 'zod';
+import type { Prisma } from '@prisma/client';
 import { prisma } from '../db.js';
 import { HttpError, param } from '../lib/http.js';
+import { parsePagination, setPaginationHeaders } from '../lib/pagination.js';
 import { auth, roles, type AuthRequest } from '../middleware/auth.js';
+import { recordAudit } from '../services/audit.js';
 
 const router = Router();
 export const CATEGORIES = ['Fruits', 'Vegetables', 'Grains', 'Roots & Tubers', 'Legumes', 'Spices', 'Livestock'] as const;
+const imageUrlField = z
+  .string()
+  .trim()
+  .max(2000)
+  .refine(
+    (v) => !v || v.startsWith('/api/uploads/') || /^https?:\/\//i.test(v) || /^data:image\//i.test(v),
+    { message: 'Enter a valid image URL or upload an image file' },
+  )
+  .nullish()
+  .transform((v) => v || null);
+
 const productSchema = z.object({
   name: z.string().trim().min(2).max(120),
   description: z.string().trim().min(5).max(2000),
   price: z.coerce.number().positive().max(100_000_000),
   quantity: z.coerce.number().int().nonnegative().max(1_000_000),
   category: z.enum(CATEGORIES),
-  imageUrl: z.union([z.url(), z.literal('')]).nullish().transform((v) => v || null),
+  imageUrl: imageUrlField,
   location: z.string().trim().max(120).nullish().transform((v) => v || null),
 });
-const listQuery = z.object({ search: z.string().trim().max(100).optional(), category: z.string().max(40).optional(), farmerId: z.string().max(64).optional() });
+const listQuery = z.object({
+  search: z.string().trim().max(100).optional(),
+  category: z.string().max(40).optional(),
+  farmerId: z.string().max(64).optional(),
+});
 const farmerSelect = { select: { id: true, name: true, farmLocation: true, kycStatus: true } } as const;
 
 type WithRatings = { reviews: { rating: number }[] };
@@ -34,15 +52,31 @@ router.get('/categories', (_, res) => res.json(CATEGORIES));
 
 router.get('/', async (req, res) => {
   const { search, category, farmerId } = listQuery.parse(req.query);
-  const products = await prisma.product.findMany({
-    where: {
-      isActive: true, quantity: { gt: 0 },
-      category: category || undefined, farmerId: farmerId || undefined,
-      OR: search ? [{ name: { contains: search, mode: 'insensitive' } }, { description: { contains: search, mode: 'insensitive' } }, { category: { contains: search, mode: 'insensitive' } }] : undefined,
-    },
-    include: { farmer: farmerSelect, reviews: { select: { rating: true } } },
-    orderBy: { createdAt: 'desc' }, take: 100,
-  });
+  const { page, limit, skip } = parsePagination(req.query, 100);
+  const where: Prisma.ProductWhereInput = {
+    isActive: true,
+    quantity: { gt: 0 },
+    category: category || undefined,
+    farmerId: farmerId || undefined,
+    OR: search
+      ? [
+          { name: { contains: search, mode: 'insensitive' } },
+          { description: { contains: search, mode: 'insensitive' } },
+          { category: { contains: search, mode: 'insensitive' } },
+        ]
+      : undefined,
+  };
+  const [total, products] = await Promise.all([
+    prisma.product.count({ where }),
+    prisma.product.findMany({
+      where,
+      include: { farmer: farmerSelect, reviews: { select: { rating: true } } },
+      orderBy: { createdAt: 'desc' },
+      skip,
+      take: limit,
+    }),
+  ]);
+  setPaginationHeaders(res, { total, page, limit });
   res.json(products.map(withRating));
 });
 
@@ -65,6 +99,14 @@ router.post('/', auth, roles('FARMER'), async (req: AuthRequest, res) => {
   if (farmer?.kycStatus !== 'APPROVED') throw new HttpError(403, 'Your farm must be verified before you can list products');
   const data = productSchema.parse(req.body);
   const p = await prisma.product.create({ data: { ...data, location: data.location ?? farmer.farmLocation, farmerId: farmer.id } });
+  await recordAudit({
+    actorId: farmer.id,
+    actorEmail: farmer.email,
+    action: 'PRODUCT_CREATED',
+    targetType: 'PRODUCT',
+    targetId: p.id,
+    summary: `${farmer.name} listed "${p.name}" (${p.quantity} units at ₦${Number(p.price).toLocaleString()})`,
+  });
   res.status(201).json(p);
 });
 
@@ -80,6 +122,13 @@ router.delete('/:id', auth, roles('FARMER'), async (req: AuthRequest, res) => {
   const ordered = await prisma.orderItem.count({ where: { productId: product.id } });
   if (ordered) await prisma.product.update({ where: { id: product.id }, data: { isActive: false } });
   else await prisma.product.delete({ where: { id: product.id } });
+  await recordAudit({
+    actorId: req.user!.id,
+    action: ordered ? 'PRODUCT_ARCHIVED' : 'PRODUCT_DELETED',
+    targetType: 'PRODUCT',
+    targetId: product.id,
+    summary: `Product "${product.name}" was ${ordered ? 'archived' : 'deleted'}`,
+  });
   res.status(204).send();
 });
 

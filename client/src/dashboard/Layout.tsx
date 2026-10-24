@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { LogOut, Sprout, Store } from 'lucide-react';
+import NotificationBell from '../components/NotificationBell';
 import { useAuth } from '../lib/auth';
 import { navigate } from '../lib/hooks';
 import type { User } from '../lib/types';
@@ -21,8 +22,9 @@ export default function Layout({ user, tabs, tab, children }: { user: User; tabs
       <button onClick={() => navigate('')} className="flex items-center gap-2 font-black text-green-900"><span className="grid h-9 w-9 place-items-center rounded-xl bg-green-700 text-white"><Sprout size={19} /></span>FarmExpress</button>
       <div className="flex items-center gap-2">
         <span className="hidden rounded-full bg-green-50 px-3 py-1.5 text-xs font-bold text-green-700 sm:block">{ROLE_LABEL[user.role]} · {user.name}</span>
-        <button onClick={() => navigate('')} aria-label="Back to marketplace" className="rounded-xl border p-2"><Store size={18} /></button>
-        <button onClick={() => { logout(); navigate(''); }} aria-label="Sign out" className="rounded-xl border p-2"><LogOut size={18} /></button>
+        <NotificationBell />
+        <button onClick={() => navigate('')} aria-label="Back to marketplace" className="rounded-xl border p-2 hover:bg-slate-50"><Store size={18} /></button>
+        <button onClick={() => { logout(); navigate(''); }} aria-label="Sign out" className="rounded-xl border p-2 hover:bg-slate-50"><LogOut size={18} /></button>
       </div>
     </div></header>
     <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 lg:grid-cols-[220px_1fr] lg:py-8">

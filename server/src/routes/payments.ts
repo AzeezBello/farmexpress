@@ -1,13 +1,15 @@
 import { Router, type Request } from 'express';
+import { z } from 'zod';
 import { config } from '../config.js';
 import { prisma } from '../db.js';
 import { HttpError, param } from '../lib/http.js';
 import { initializeTransaction, isValidSignature, paystackEnabled, verifyTransaction, type PaystackTransaction } from '../lib/paystack.js';
 import { auth, roles, type AuthRequest } from '../middleware/auth.js';
-import { findPaymentForTransaction, settleSuccessfulTransaction, toKobo } from '../services/payments.js';
+import { findPaymentForTransaction, refundOrderPayment, settleSuccessfulTransaction, toKobo } from '../services/payments.js';
 
 export type RawBodyRequest = Request & { rawBody?: Buffer };
 const router = Router();
+const refundSchema = z.object({ reason: z.string().trim().max(300).optional() });
 
 function requirePaystack() {
   if (!paystackEnabled()) throw new HttpError(503, 'Online payment is not available yet. Our team will contact you with payment details.');
@@ -42,16 +44,30 @@ router.get('/verify/:reference', auth, async (req: AuthRequest, res) => {
   res.json({ status: 'success', ...result });
 });
 
+router.post('/orders/:id/refund', auth, roles('ADMIN'), async (req: AuthRequest, res) => {
+  const { reason } = refundSchema.parse(req.body ?? {});
+  const updated = await refundOrderPayment(param(req), { id: req.user!.id }, reason);
+  res.json(updated);
+});
+
 router.post('/webhook/paystack', async (req: RawBodyRequest, res) => {
   if (!paystackEnabled()) return res.sendStatus(503);
   if (!isValidSignature(req.rawBody, req.header('x-paystack-signature'))) return res.sendStatus(401);
-  const event = req.body as { event?: string; data?: PaystackTransaction };
+  const event = req.body as { event?: string; data?: PaystackTransaction & { transaction_reference?: string } };
   if (event.event === 'charge.success' && event.data) {
     try { await settleSuccessfulTransaction(event.data); }
     catch (e) {
       // Acknowledge unrecoverable events so Paystack stops retrying; they're logged for ops. Anything else → 500 and Paystack retries.
       if (e instanceof HttpError && e.status < 500) console.warn(`[payments] webhook ${event.data.reference}: ${e.message}`);
       else throw e;
+    }
+  } else if (event.event === 'refund.processed' && event.data) {
+    const ref = event.data.transaction_reference || event.data.reference;
+    if (ref) {
+      await prisma.payment.updateMany({
+        where: { reference: ref, status: 'SUCCESSFUL' },
+        data: { status: 'REFUNDED', refundedAt: new Date(), refundReference: `paystack-webhook:${event.data.id}` },
+      });
     }
   }
   res.sendStatus(200);

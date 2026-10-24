@@ -3,8 +3,10 @@ import { ChevronRight, LayoutDashboard, Menu, Search, ShieldCheck, ShoppingCart,
 import AuthModal from './components/AuthModal';
 import CartDrawer from './components/CartDrawer';
 import CheckoutModal from './components/CheckoutModal';
+import NotificationBell from './components/NotificationBell';
 import ProductCard from './components/ProductCard';
 import Toast from './components/Toast';
+import { Pagination } from './components/ui';
 import { api } from './lib/api';
 import { useAuth } from './lib/auth';
 import { useCart } from './lib/cart';
@@ -12,15 +14,109 @@ import { CATEGORIES, isUuid } from './lib/format';
 import { navigate, useDebounced, useToast } from './lib/hooks';
 import type { Product, User } from './lib/types';
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
 const demoProducts: Product[] = [
-  { id: 'demo-1', name: 'Fresh Plantain', description: 'Freshly harvested ripe and unripe plantain from a verified farm.', price: 6500, quantity: 80, category: 'Fruits', imageUrl: img('photo-1603833665858-e61d17a86224'), location: 'Ogun State', farmer: { name: 'Green Valley Farm', kycStatus: 'APPROVED' } },
-  { id: 'demo-2', name: 'Premium Cassava', description: 'Quality cassava roots suitable for household and processing use.', price: 8500, quantity: 120, category: 'Roots & Tubers', imageUrl: img('photo-1603048297172-c92544798d5a'), location: 'Oyo State', farmer: { name: 'Oyo Harvest Co-op', kycStatus: 'APPROVED' } },
-  { id: 'demo-3', name: 'Yellow Maize', description: 'Clean, carefully dried yellow maize supplied directly by farmers.', price: 12000, quantity: 60, category: 'Grains', imageUrl: img('photo-1551754655-cd27e38d2076'), location: 'Kaduna State', farmer: { name: 'Northern Grain Farm', kycStatus: 'APPROVED' } },
-  { id: 'demo-4', name: 'Fresh Tomatoes', description: 'Farm-fresh tomatoes packed for local and diaspora orders.', price: 9500, quantity: 45, category: 'Vegetables', imageUrl: img('photo-1546094096-0df4bcaaa337'), location: 'Kano State', farmer: { name: 'Sunrise Farms', kycStatus: 'APPROVED' } },
-  { id: 'demo-5', name: 'Dried Pepper', description: 'Aromatic dried pepper sourced from smallholder farmers.', price: 7200, quantity: 90, category: 'Spices', imageUrl: img('photo-1583663848850-46af132dc08a'), location: 'Kaduna State', farmer: { name: 'Northern Grain Farm', kycStatus: 'APPROVED' } },
-  { id: 'demo-6', name: 'Cocoa Beans', description: 'Quality Nigerian cocoa beans available for bulk and industry orders.', price: 28000, quantity: 35, category: 'Grains', imageUrl: img('photo-1511381939415-e44015466834'), location: 'Ondo State', farmer: { name: 'Ondo Cocoa Collective', kycStatus: 'APPROVED' } },
+  {
+    id: 'demo-1',
+    name: 'Fresh Plantain',
+    description: 'Freshly harvested green and ripe plantain bunches from verified Oyo farms.',
+    price: 6500,
+    quantity: 80,
+    category: 'Fruits',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Banane_plantain_(Musaceae).jpg?width=900',
+    location: 'Oyo State, Nigeria',
+    farmer: { name: 'Green Valley Farm', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-2',
+    name: 'Fresh Cassava Tubers',
+    description: 'Quality farm-fresh cassava roots (Manihot esculenta) suitable for garri, fufu, and industrial starch processing.',
+    price: 8500,
+    quantity: 120,
+    category: 'Roots & Tubers',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Yuca_%28Manihot_esculenta%29.jpg',
+    location: 'Ogun State, Nigeria',
+    farmer: { name: 'Oyo Harvest Co-op', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-3',
+    name: 'Yellow Maize',
+    description: 'Clean, sun-dried yellow maize cobs and kernels supplied directly from northern farms.',
+    price: 12000,
+    quantity: 60,
+    category: 'Grains',
+    imageUrl: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=900&q=80',
+    location: 'Kaduna State, Nigeria',
+    farmer: { name: 'Northern Grain Farm', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-4',
+    name: 'Fresh Roma Tomatoes',
+    description: 'Firm, vine-ripened farm tomatoes packed in ventilated crates for local and diaspora orders.',
+    price: 9500,
+    quantity: 45,
+    category: 'Vegetables',
+    imageUrl: 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=900&q=80',
+    location: 'Kano State, Nigeria',
+    farmer: { name: 'Sunrise Farms', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-5',
+    name: 'Dried Red Chili Pepper',
+    description: 'Sun-dried aromatic red chili peppers sourced directly from smallholder farmers.',
+    price: 7200,
+    quantity: 90,
+    category: 'Spices',
+    imageUrl: 'https://images.unsplash.com/photo-1583663848850-46af132dc08a?auto=format&fit=crop&w=900&q=80',
+    location: 'Kaduna State, Nigeria',
+    farmer: { name: 'Northern Grain Farm', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-6',
+    name: 'Raw Cocoa Beans & Pods',
+    description: 'Export-grade Nigerian Theobroma cacao pods and fermented cocoa beans for bulk and processor orders.',
+    price: 28000,
+    quantity: 35,
+    category: 'Grains',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Cacao-pod-k4636-14.jpg',
+    location: 'Ondo State, Nigeria',
+    farmer: { name: 'Ondo Cocoa Collective', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-7',
+    name: 'Puna White Yam Tubers',
+    description: 'Large, sweet Puna white yam tubers freshly harvested and cured for long shelf life.',
+    price: 14500,
+    quantity: 65,
+    category: 'Roots & Tubers',
+    imageUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Yam_at_monday_market_kaduna_state_01.jpg?width=900',
+    location: 'Benue State, Nigeria',
+    farmer: { name: 'Benue Yam Growers', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-8',
+    name: 'Fresh Split Ginger Rhizomes',
+    description: 'Pungent, high-oil Nigerian ginger rhizomes ideal for culinary, beverage, and export buyers.',
+    price: 11000,
+    quantity: 75,
+    category: 'Spices',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Fresh_ginger_rhizome_01.jpg',
+    location: 'Southern Kaduna, Nigeria',
+    farmer: { name: 'Kaduna Spice Cooperative', kycStatus: 'APPROVED' },
+  },
+  {
+    id: 'demo-9',
+    name: 'Raw Shelled Groundnuts',
+    description: 'Clean, sorted West African groundnuts (peanuts) ready for roasting, oil milling, or peanut paste.',
+    price: 10500,
+    quantity: 110,
+    category: 'Legumes',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Groundnut_%28Peanut%29.jpg',
+    location: 'Kano State, Nigeria',
+    farmer: { name: 'Kano Legume Collective', kycStatus: 'APPROVED' },
+  },
 ];
+
+const PAGE_SIZE = 6;
 
 type AuthPrompt = { role?: 'BUYER' | 'FARMER' | 'INDUSTRY'; mode?: 'login' | 'register'; reason?: string; then?: 'checkout' | 'dashboard' };
 
@@ -32,12 +128,17 @@ export default function Storefront({ promptSignIn }: { promptSignIn: boolean }) 
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
+  const [page, setPage] = useState(1);
   const debouncedSearch = useDebounced(search.trim());
   const [cartOpen, setCartOpen] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [auth, setAuth] = useState<AuthPrompt | null>(promptSignIn ? { mode: 'login', reason: 'Sign in to open your dashboard.', then: 'dashboard' } : null);
   const [toast, showToast] = useToast();
+
+  useEffect(() => {
+    setPage(1);
+  }, [debouncedSearch, category]);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -53,10 +154,14 @@ export default function Storefront({ promptSignIn }: { promptSignIn: boolean }) 
   }, [debouncedSearch, category]);
 
   // The API filters server-side; demo mode filters locally.
-  const visible = useMemo(() => apiOnline ? products : products.filter((p) => {
+  const filtered = useMemo(() => apiOnline ? products : products.filter((p) => {
     const q = debouncedSearch.toLowerCase();
     return (!q || `${p.name} ${p.description} ${p.category}`.toLowerCase().includes(q)) && (!category || p.category === category);
   }), [products, apiOnline, debouncedSearch, category]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const visible = useMemo(() => filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE), [filtered, safePage]);
 
   const canBuy = (u: User | null) => !!u && (u.role === 'BUYER' || u.role === 'INDUSTRY');
   function startCheckout(u: User | null = user) {
@@ -87,6 +192,7 @@ export default function Storefront({ promptSignIn }: { promptSignIn: boolean }) 
         <nav className="hidden items-center gap-7 md:flex"><a href="#marketplace" className="text-sm font-medium text-slate-600 hover:text-green-700">Marketplace</a><a href="#how" className="text-sm font-medium text-slate-600 hover:text-green-700">How it works</a><a href="#sell" className="text-sm font-medium text-slate-600 hover:text-green-700">Sell on FarmExpress</a></nav>
         <div className="flex items-center gap-2">
           {accountButton}
+          {user && <NotificationBell />}
           <button aria-label={`Cart, ${cart.count} items`} onClick={() => setCartOpen(true)} className="relative rounded-xl border border-slate-200 p-2.5"><ShoppingCart size={19} />{cart.count > 0 && <span className="absolute -right-2 -top-2 min-w-5 rounded-full bg-orange-500 px-1.5 text-center text-xs font-bold text-white">{cart.count}</span>}</button>
           <button aria-label="Menu" aria-expanded={menu} className="rounded-xl border p-2 md:hidden" onClick={() => setMenu((v) => !v)}><Menu size={20} /></button>
         </div>
@@ -103,11 +209,12 @@ export default function Storefront({ promptSignIn }: { promptSignIn: boolean }) 
         <div className="mb-7 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"><div><p className="text-sm font-bold uppercase tracking-wider text-orange-600">Marketplace</p><h2 className="mt-1 text-3xl font-black tracking-tight">Fresh produce from verified farms</h2><p className="mt-2 text-slate-500">Shop by product, category, or farming region.</p></div>
           {apiOnline !== null && <div className="flex items-center gap-2 text-xs text-slate-500"><span className={`h-2 w-2 rounded-full ${apiOnline ? 'bg-green-500' : 'bg-amber-400'}`} />{apiOnline ? 'Live marketplace' : 'Demo marketplace — API offline'}</div>}</div>
         <div className="mb-8 grid gap-3 lg:grid-cols-[1fr_220px]">
-          <label className="flex items-center gap-3 rounded-2xl border bg-white px-4 py-3 shadow-sm focus-within:border-green-600"><Search size={20} className="text-slate-400" /><input type="search" aria-label="Search produce" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search plantain, cassava, maize..." className="w-full bg-transparent outline-none" /></label>
+          <label className="flex items-center gap-3 rounded-2xl border bg-white px-4 py-3 shadow-sm focus-within:border-green-600"><Search size={20} className="text-slate-400" /><input type="search" aria-label="Search produce" autoCorrect="off" autoCapitalize="off" spellCheck={false} value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search plantain, cassava, maize, yam..." className="w-full bg-transparent outline-none" /></label>
           <select aria-label="Category" value={category} onChange={(e) => setCategory(e.target.value)} className="rounded-2xl border bg-white px-4 py-3 shadow-sm outline-none"><option value="">All categories</option>{CATEGORIES.map((c) => <option key={c}>{c}</option>)}</select>
         </div>
         <div className={`grid gap-5 transition-opacity sm:grid-cols-2 lg:grid-cols-3 ${loading ? 'opacity-60' : ''}`}>{visible.map((p) => <ProductCard key={p.id} p={p} inCart={cart.cart[p.id]?.qty ?? 0} onAdd={() => { cart.add(p); showToast(`${p.name} added to cart`); }} />)}</div>
-        {!loading && visible.length === 0 && <div className="rounded-3xl border border-dashed bg-white p-12 text-center"><h3 className="font-bold">No products found</h3><p className="mt-1 text-sm text-slate-500">Try a different search or category.</p></div>}
+        {!loading && filtered.length === 0 && <div className="rounded-3xl border border-dashed bg-white p-12 text-center"><h3 className="font-bold">No products found</h3><p className="mt-1 text-sm text-slate-500">Try a different search or category.</p></div>}
+        <Pagination page={safePage} totalPages={totalPages} total={filtered.length} pageSize={PAGE_SIZE} onPageChange={setPage} />
       </section>
       <section id="how" className="scroll-mt-16 border-y bg-white"><div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"><div className="text-center"><p className="text-sm font-bold uppercase tracking-wider text-orange-600">How it works</p><h2 className="mt-2 text-3xl font-black">From farm to your basket</h2></div><div className="mt-10 grid gap-5 md:grid-cols-3">{[['01', 'Browse', 'Discover fresh produce from verified African farmers.'], ['02', 'Order & pay', 'Choose quantities and delivery or pickup. Your stock is reserved instantly.'], ['03', 'Track & review', 'Follow your order status and review produce after delivery.']].map(([n, t, d]) => <div className="rounded-3xl border p-6" key={n}><span className="text-4xl font-black text-green-200">{n}</span><h3 className="mt-5 text-xl font-bold">{t}</h3><p className="mt-2 leading-6 text-slate-500">{d}</p></div>)}</div></div></section>
       <section id="sell" className="scroll-mt-16 bg-orange-50"><div className="mx-auto flex max-w-7xl flex-col gap-7 px-4 py-14 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8"><div><p className="text-sm font-bold uppercase tracking-wider text-orange-600">For farmers & businesses</p><h2 className="mt-2 text-3xl font-black">Turn your harvest into a bigger market.</h2><p className="mt-3 max-w-2xl text-slate-600">Create listings, manage inventory, receive orders and track sales from one simple dashboard.</p></div><button onClick={sell} className="inline-flex items-center justify-center gap-2 rounded-xl bg-green-800 px-5 py-3 font-bold text-white">Start selling <ChevronRight size={18} /></button></div></section>

@@ -1,15 +1,24 @@
 import { MapPin, Plus, ShieldCheck, Star } from 'lucide-react';
+import { resolveAssetUrl } from '../lib/api';
 import { naira } from '../lib/format';
 import type { Product } from '../lib/types';
 
-export const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&q=80';
+export const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1546094096-0df4bcaaa337?auto=format&fit=crop&w=900&q=80';
 
 export default function ProductCard({ p, inCart, onAdd }: { p: Product; inCart: number; onAdd: () => void }) {
   const verified = p.farmer?.kycStatus === 'APPROVED';
   const soldOut = inCart >= p.quantity;
+  const imgSrc = resolveAssetUrl(p.imageUrl) || FALLBACK_IMAGE;
+
   return <article className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
     <div className="relative overflow-hidden">
-      <img src={p.imageUrl || FALLBACK_IMAGE} alt={p.name} loading="lazy" className="h-56 w-full object-cover transition duration-500 group-hover:scale-105" />
+      <img
+        src={imgSrc}
+        alt={p.name}
+        loading="lazy"
+        onError={(e) => { if (e.currentTarget.src !== FALLBACK_IMAGE) e.currentTarget.src = FALLBACK_IMAGE; }}
+        className="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+      />
       <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-xs font-bold text-green-700 shadow-sm">{p.category}</span>
       {verified && <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-green-900/90 px-2.5 py-1 text-xs font-bold text-white"><ShieldCheck size={13} /> Verified farm</span>}
     </div>

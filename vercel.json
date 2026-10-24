@@ -1,6 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci --prefix client",
-  "buildCommand": "npm --prefix client run build",
-  "outputDirectory": "client/dist"
+  "installCommand": "npm install --prefix server && npm install --prefix client",
+  "buildCommand": "cd server && npx prisma generate && npm run build && ((npx prisma migrate deploy || npx prisma db push --accept-data-loss) && npm run seed || true) && cd ../client && npm run build",
+  "outputDirectory": "client/dist",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "server/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index"
+    }
+  ]
 }

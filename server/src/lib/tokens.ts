@@ -6,5 +6,8 @@ export const signToken = (user: Pick<User, 'id' | 'role'>) => jwt.sign({ id: use
 
 export const publicUser = (user: User) => ({
   id: user.id, name: user.name, email: user.email, role: user.role, kycStatus: user.kycStatus,
-  businessName: user.businessName, farmLocation: user.farmLocation, createdAt: user.createdAt,
+  businessName: user.businessName, farmLocation: user.farmLocation,
+  kycDocumentType: user.kycDocumentType, kycDocumentUrl: user.kycDocumentUrl,
+  kycSubmittedAt: user.kycSubmittedAt, kycNote: user.kycNote,
+  createdAt: user.createdAt,
 });

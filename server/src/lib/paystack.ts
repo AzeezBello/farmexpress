@@ -31,7 +31,25 @@ export const initializeTransaction = (p: { email: string; amountKobo: number; re
     body: JSON.stringify({ email: p.email, amount: p.amountKobo, currency: 'NGN', reference: p.reference, callback_url: p.callbackUrl, metadata: p.metadata }),
   });
 
+export type PaystackRefund = {
+  id: number;
+  status: string;
+  transaction?: { id?: number; reference?: string };
+  amount?: number;
+  currency?: string;
+};
+
 export const verifyTransaction = (reference: string) => call<PaystackTransaction>(`/transaction/verify/${encodeURIComponent(reference)}`);
+
+export const refundTransaction = (p: { transaction: string; amountKobo?: number; merchantNote?: string }) =>
+  call<PaystackRefund>('/refund', {
+    method: 'POST',
+    body: JSON.stringify({
+      transaction: p.transaction,
+      ...(p.amountKobo ? { amount: p.amountKobo } : {}),
+      ...(p.merchantNote ? { merchant_note: p.merchantNote, customer_note: p.merchantNote } : {}),
+    }),
+  });
 
 // Paystack signs the raw request body with HMAC-SHA512 using the secret key.
 export function isValidSignature(rawBody: Buffer | undefined, signature: string | undefined) {
