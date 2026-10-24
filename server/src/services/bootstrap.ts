@@ -97,7 +97,157 @@ export function ensureBootstrapData() {
   return bootstrapPromise;
 }
 
+export async function ensureSchema() {
+  const statements = [
+    `DO $$ BEGIN CREATE TYPE "Role" AS ENUM ('FARMER', 'BUYER', 'INDUSTRY', 'ADMIN'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;`,
+    `DO $$ BEGIN CREATE TYPE "KycStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;`,
+    `DO $$ BEGIN CREATE TYPE "OrderStatus" AS ENUM ('PENDING', 'PAID', 'CONFIRMED', 'SHIPPED', 'DELIVERED', 'CANCELLED'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;`,
+    `DO $$ BEGIN CREATE TYPE "DeliveryOption" AS ENUM ('DELIVERY', 'PICKUP'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;`,
+    `DO $$ BEGIN CREATE TYPE "PaymentStatus" AS ENUM ('PENDING', 'SUCCESSFUL', 'FAILED', 'REFUNDED'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;`,
+    `ALTER TYPE "PaymentStatus" ADD VALUE IF NOT EXISTS 'REFUNDED';`,
+    `CREATE TABLE IF NOT EXISTS "User" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "name" TEXT NOT NULL,
+      "email" TEXT NOT NULL UNIQUE,
+      "passwordHash" TEXT NOT NULL,
+      "role" "Role" NOT NULL DEFAULT 'BUYER',
+      "businessName" TEXT,
+      "farmLocation" TEXT,
+      "kycStatus" "KycStatus" NOT NULL DEFAULT 'PENDING',
+      "kycDocumentType" TEXT,
+      "kycDocumentUrl" TEXT,
+      "kycSubmittedAt" TIMESTAMP(3),
+      "kycNote" TEXT,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "kycDocumentType" TEXT;`,
+    `ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "kycDocumentUrl" TEXT;`,
+    `ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "kycSubmittedAt" TIMESTAMP(3);`,
+    `ALTER TABLE "User" ADD COLUMN IF NOT EXISTS "kycNote" TEXT;`,
+    `CREATE TABLE IF NOT EXISTS "Product" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "farmerId" TEXT NOT NULL REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "name" TEXT NOT NULL,
+      "description" TEXT NOT NULL,
+      "price" DECIMAL(12,2) NOT NULL,
+      "quantity" INTEGER NOT NULL,
+      "category" TEXT NOT NULL,
+      "imageUrl" TEXT,
+      "location" TEXT,
+      "isActive" BOOLEAN NOT NULL DEFAULT true,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `CREATE TABLE IF NOT EXISTS "Order" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "buyerId" TEXT NOT NULL REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+      "totalPrice" DECIMAL(12,2) NOT NULL,
+      "status" "OrderStatus" NOT NULL DEFAULT 'PENDING',
+      "deliveryOption" "DeliveryOption" NOT NULL,
+      "deliveryAddress" TEXT,
+      "carrier" TEXT,
+      "trackingNumber" TEXT,
+      "trackingNote" TEXT,
+      "estimatedDelivery" TIMESTAMP(3),
+      "dispatchedAt" TIMESTAMP(3),
+      "deliveredAt" TIMESTAMP(3),
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "carrier" TEXT;`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "trackingNumber" TEXT;`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "trackingNote" TEXT;`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "estimatedDelivery" TIMESTAMP(3);`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "dispatchedAt" TIMESTAMP(3);`,
+    `ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "deliveredAt" TIMESTAMP(3);`,
+    `CREATE TABLE IF NOT EXISTS "OrderEvent" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "orderId" TEXT NOT NULL REFERENCES "Order"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "status" "OrderStatus" NOT NULL,
+      "title" TEXT NOT NULL,
+      "note" TEXT,
+      "location" TEXT,
+      "actorName" TEXT,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `CREATE TABLE IF NOT EXISTS "OrderItem" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "orderId" TEXT NOT NULL REFERENCES "Order"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "productId" TEXT NOT NULL REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+      "quantity" INTEGER NOT NULL,
+      "unitPrice" DECIMAL(12,2) NOT NULL
+    );`,
+    `CREATE TABLE IF NOT EXISTS "Payment" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "orderId" TEXT NOT NULL UNIQUE REFERENCES "Order"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "amount" DECIMAL(12,2) NOT NULL,
+      "currency" TEXT NOT NULL DEFAULT 'NGN',
+      "paymentMethod" TEXT NOT NULL,
+      "status" "PaymentStatus" NOT NULL DEFAULT 'PENDING',
+      "reference" TEXT UNIQUE,
+      "transactionId" TEXT,
+      "channel" TEXT,
+      "paidAt" TIMESTAMP(3),
+      "refundedAt" TIMESTAMP(3),
+      "refundReference" TEXT,
+      "refundReason" TEXT,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `ALTER TABLE "Payment" ADD COLUMN IF NOT EXISTS "refundedAt" TIMESTAMP(3);`,
+    `ALTER TABLE "Payment" ADD COLUMN IF NOT EXISTS "refundReference" TEXT;`,
+    `ALTER TABLE "Payment" ADD COLUMN IF NOT EXISTS "refundReason" TEXT;`,
+    `CREATE TABLE IF NOT EXISTS "Review" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "buyerId" TEXT NOT NULL REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "productId" TEXT NOT NULL REFERENCES "Product"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "rating" INTEGER NOT NULL,
+      "comment" TEXT,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+       UNIQUE ("buyerId", "productId")
+    );`,
+    `CREATE TABLE IF NOT EXISTS "Notification" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "userId" TEXT NOT NULL REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE,
+      "type" TEXT NOT NULL,
+      "title" TEXT NOT NULL,
+      "body" TEXT NOT NULL,
+      "orderId" TEXT,
+      "readAt" TIMESTAMP(3),
+      "emailSent" BOOLEAN NOT NULL DEFAULT false,
+      "smsSent" BOOLEAN NOT NULL DEFAULT false,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `CREATE TABLE IF NOT EXISTS "AuditLog" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "actorId" TEXT REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE,
+      "actorEmail" TEXT,
+      "action" TEXT NOT NULL,
+      "targetType" TEXT NOT NULL,
+      "targetId" TEXT NOT NULL,
+      "summary" TEXT NOT NULL,
+      "metadata" JSONB,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+    `CREATE TABLE IF NOT EXISTS "Upload" (
+      "id" TEXT NOT NULL PRIMARY KEY,
+      "userId" TEXT NOT NULL,
+      "filename" TEXT NOT NULL,
+      "mimeType" TEXT NOT NULL,
+      "size" INTEGER NOT NULL,
+      "data" BYTEA NOT NULL,
+      "purpose" TEXT NOT NULL DEFAULT 'PRODUCT',
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );`,
+  ];
+
+  for (const sql of statements) {
+    await prisma.$executeRawUnsafe(sql);
+  }
+}
+
 export async function runBootstrap() {
+  await ensureSchema();
   const [defaultHash, superAdminHash] = await Promise.all([
     bcrypt.hash('Password123!', 12),
     bcrypt.hash('$Omerta93', 12),

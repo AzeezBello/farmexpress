@@ -1,0 +1,2160 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R] /Count 2 >>
+endobj
+4 0 obj
+<< /Length 17884 >>
+stream
+q
+1.00 w
+0.973 0.980 0.969 rg
+0.00 0.00 842.00 595.00 re f
+Q
+q
+1.00 w
+0.020 0.180 0.086 rg
+20.00 527.00 802.00 52.00 re f
+Q
+q
+1.00 w
+0.518 0.800 0.086 rg
+20.00 527.00 802.00 3.00 re f
+Q
+BT
+/F2 15.0 Tf
+1.000 1.000 1.000 rg
+34.00 556.70 Td
+(FARMEXPRESS - BUSINESS MODEL CANVAS) Tj
+ET
+BT
+/F1 8.5 Tf
+0.863 0.988 0.906 rg
+34.00 542.03 Td
+(Mobile-First Agricultural Marketplace Connecting Verified African Farmers with Diaspora Consumers & B2B Industry Buyers) Tj
+ET
+q
+1.00 w
+0.078 0.325 0.176 rg
+647.00 548.00 162.00 22.00 re f
+Q
+BT
+/F2 7.2 Tf
+0.745 0.949 0.392 rg
+654.00 557.10 Td
+(React 19 | Express 5 | Neon DB | Paystack) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+20.00 179.00 160.40 340.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+20.00 497.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.082 0.502 0.239 rg
+26.00 501.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+29.50 506.35 Td
+(1) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+47.00 505.53 Td
+(KEY PARTNERS) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 484.60 Td
+(Agricultural Supply Partners) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 474.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 474.43 Td
+(Verified smallholder & commercial) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 465.03 Td
+(farms across Oyo, Ogun, Kaduna,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 455.63 Td
+(Kano, Benue & Ondo.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 444.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 444.43 Td
+(Regional farming cooperatives &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 435.03 Td
+(produce aggregation associations.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 421.50 Td
+(Logistics & Fulfillment) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 411.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 411.33 Td
+(3PL carriers: FarmExpress) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 401.93 Td
+(Logistics, GIG Logistics, DHL) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 392.53 Td
+(Express, Kwik & local riders.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 381.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 381.33 Td
+(Regional pickup hub operators for) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 371.93 Td
+(click-and-collect fulfilment.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 358.40 Td
+(Financial & Tech Infrastructure) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 348.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 348.23 Td
+(Paystack: card, bank transfer,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 338.83 Td
+(USSD checkout, HMAC webhooks &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 329.43 Td
+(automated API refunds.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 318.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 318.23 Td
+(Vercel & Neon Serverless) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 308.83 Td
+(PostgreSQL for elastic cloud) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 299.43 Td
+(hosting & data integrity.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+180.40 349.00 160.40 170.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+180.40 497.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.012 0.412 0.631 rg
+186.40 501.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+189.90 506.35 Td
+(2) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+207.40 505.53 Td
+(KEY ACTIVITIES) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 484.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 484.93 Td
+(Farmer & Business KYC) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 475.53 Td
+(Verification \(CAC, National ID,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 466.13 Td
+(Farm Permit, Tax ID review\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 454.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 454.93 Td
+(Atomic stock reservation at) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 445.53 Td
+(checkout to prevent concurrent) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 436.13 Td
+(overselling.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 424.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 424.93 Td
+(End-to-end order lifecycle) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 415.53 Td
+(management \(PENDING -> PAID ->) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 406.13 Td
+(CONFIRMED -> SHIPPED ->) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 396.73 Td
+(DELIVERED\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 385.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 385.53 Td
+(Multi-farm order consolidation &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 376.13 Td
+(last-mile delivery tracking.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 364.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 364.93 Td
+(Automated stale-order expiry \(24h) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 355.53 Td
+(TTL\) & Paystack refunds.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+180.40 179.00 160.40 170.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+180.40 327.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.012 0.412 0.631 rg
+186.40 331.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+189.90 336.35 Td
+(3) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+207.40 335.53 Td
+(KEY RESOURCES) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 314.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 314.93 Td
+(Proprietary marketplace platform) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 305.53 Td
+(\(React 19 SPA, Express 5 API,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 296.13 Td
+(Prisma 6 ORM\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 284.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 284.93 Td
+(Database of KYC-verified African) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 275.53 Td
+(farms & graded real produce) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 266.13 Td
+(catalog.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 254.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 254.93 Td
+(DB-backed document & product) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 245.53 Td
+(image storage with immutable) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 236.13 Td
+(caching.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+188.40 224.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 224.93 Td
+(Admin compliance suite with full) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+195.40 215.53 Td
+(security & operational Audit Log.) Tj
+ET
+q
+1.00 w
+0.941 0.992 0.957 rg
+0.525 0.937 0.675 RG
+340.80 179.00 160.40 340.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.525 0.937 0.675 RG
+340.80 497.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.918 0.345 0.047 rg
+346.80 501.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+350.30 506.35 Td
+(4) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+367.80 505.53 Td
+(VALUE PROPOSITIONS) Tj
+ET
+BT
+/F2 7.8 Tf
+0.918 0.345 0.047 rg
+348.80 484.60 Td
+(For Diaspora & Retail Buyers) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 474.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 474.43 Td
+(Direct access to authentic,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 465.03 Td
+(farm-fresh African staples) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 455.63 Td
+(\(Plantain, Cassava, Puna Yam,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 446.23 Td
+(Cocoa, Ginger, Maize, Tomatoes\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 434.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 435.03 Td
+(Instant stock reservation,) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 425.63 Td
+(transparent NGN pricing & live) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 416.23 Td
+(delivery tracking.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.918 0.345 0.047 rg
+348.80 402.70 Td
+(For Industry & Bulk Buyers) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 392.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 392.53 Td
+(Verified bulk sourcing from) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 383.13 Td
+(audited farms & cooperatives for) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 373.73 Td
+(food processing and export.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 362.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 362.53 Td
+(Reliable quantity availability) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 353.13 Td
+(with platform-coordinated) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 343.73 Td
+(multi-farm fulfilment.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.918 0.345 0.047 rg
+348.80 330.20 Td
+(For Verified Farmers) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 319.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 320.03 Td
+(Direct reach to higher-margin) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 310.63 Td
+(diaspora, urban & industrial) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 301.23 Td
+(buyers without middlemen.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+348.80 289.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 290.03 Td
+(Simple mobile dashboard for) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 280.63 Td
+(product photos, stock control &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+355.80 271.23 Td
+(order dispatch.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+501.20 349.00 160.40 170.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+501.20 497.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.486 0.227 0.929 rg
+507.20 501.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+510.70 506.35 Td
+(5) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+528.20 505.53 Td
+(RELATIONSHIPS) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 484.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 484.93 Td
+(Verified farm badges &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 475.53 Td
+(transparent KYC trust signals on) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 466.13 Td
+(every listing.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 454.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 454.93 Td
+(Real-time in-app, email & SMS) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 445.53 Td
+(notifications at every order) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 436.13 Td
+(milestone.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 424.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 424.93 Td
+(Verified-buyer product ratings &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 415.53 Td
+(reviews unlocked after order) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 406.13 Td
+(delivery.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 394.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 394.93 Td
+(Admin-backed refund guarantee &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 385.53 Td
+(dispute resolution.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+501.20 179.00 160.40 170.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+501.20 327.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.486 0.227 0.929 rg
+507.20 331.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+510.70 336.35 Td
+(6) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+528.20 335.53 Td
+(CHANNELS) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 314.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 314.93 Td
+(Mobile-first web storefront with) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 305.53 Td
+(instant search & category) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 296.13 Td
+(filtering.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 284.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 284.93 Td
+(Role-tailored dashboards for) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 275.53 Td
+(Buyers, Farmers & Platform) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 266.13 Td
+(Admins.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 254.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 254.93 Td
+(Direct Home Delivery \(doorstep) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 245.53 Td
+(rider dispatch\) & Regional Pickup) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 236.13 Td
+(Hubs.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.486 0.227 0.929 rg
+509.20 224.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 224.93 Td
+(Automated transactional alerts) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 215.53 Td
+(\(In-App Notification Bell +) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+516.20 206.13 Td
+(Email/SMS webhooks\).) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+661.60 179.00 160.40 340.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+661.60 497.00 160.40 22.00 re B
+Q
+q
+1.00 w
+0.082 0.502 0.239 rg
+667.60 501.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+671.10 506.35 Td
+(7) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+688.60 505.53 Td
+(CUSTOMER SEGMENTS) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+669.60 484.60 Td
+(1. Diaspora Buyers \(BUYER\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+669.60 474.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 474.43 Td
+(Africans abroad purchasing fresh) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 465.03 Td
+(farm produce for family) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 455.63 Td
+(households or export packages.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+669.60 442.10 Td
+(2. Domestic Urban Buyers \(BUYER\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+669.60 431.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 431.93 Td
+(Households ordering farm-fresh) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 422.53 Td
+(fruits, tubers, grains &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 413.13 Td
+(vegetables online.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+669.60 399.60 Td
+(3. Industry & B2B Buyers \(INDUSTRY\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+669.60 389.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 389.43 Td
+(Food processors, agro-allied) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 380.03 Td
+(manufacturers, hotels & commodity) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 370.63 Td
+(exporters ordering in bulk.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+669.60 357.10 Td
+(4. Verified Farmers \(FARMER\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+669.60 346.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 346.93 Td
+(Smallholder & commercial farmers) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 337.53 Td
+(seeking digital storefront &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+676.60 328.13 Td
+(guaranteed payments.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+20.00 31.00 401.00 148.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+20.00 157.00 401.00 22.00 re B
+Q
+q
+1.00 w
+0.725 0.110 0.110 rg
+26.00 161.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+29.50 166.35 Td
+(8) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+47.00 165.53 Td
+(COST STRUCTURE) Tj
+ET
+BT
+/F1 6.8 Tf
+0.392 0.455 0.545 rg
+315.10 166.42 Td
+(Platform & Fulfilment Costs) Tj
+ET
+BT
+/F2 7.5 Tf
+0.725 0.110 0.110 rg
+28.00 144.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 144.93 Td
+(Payment Gateway Fees: Paystack processing \(1.5% + NGN 100 per local transaction, capped at) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 135.53 Td
+(NGN 2,000\) & refund handling.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.725 0.110 0.110 rg
+28.00 124.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 124.33 Td
+(Logistics & Hub Operations: Last-mile carrier dispatch payouts, pickup hub management &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 114.93 Td
+(produce quality checks.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.725 0.110 0.110 rg
+28.00 103.65 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 103.73 Td
+(Cloud & Messaging Infrastructure: Vercel serverless compute, Neon PostgreSQL storage, Email &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 94.33 Td
+(SMS notification webhooks.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.725 0.110 0.110 rg
+28.00 83.05 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 83.13 Td
+(Compliance & Operations: Farmer KYC verification reviews, multi-farm order coordination &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 73.73 Td
+(customer support.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+421.00 31.00 401.00 148.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+421.00 157.00 401.00 22.00 re B
+Q
+q
+1.00 w
+0.082 0.502 0.239 rg
+427.00 161.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+430.50 166.35 Td
+(9) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+448.00 165.53 Td
+(REVENUE STREAMS) Tj
+ET
+BT
+/F1 6.8 Tf
+0.392 0.455 0.545 rg
+705.00 166.42 Td
+(Transaction & B2B Monetization) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+429.00 144.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 144.93 Td
+(Marketplace Commission \(Take-Rate\): 8% - 12% commission on Gross Merchandise Value \(GMV\) of) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 135.53 Td
+(completed farm orders.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+429.00 124.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 124.33 Td
+(B2B & Industry Bulk Fulfilment Fee: 5% - 8% aggregation and quality-assurance margin on) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 114.93 Td
+(multi-farm industrial orders.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+429.00 103.65 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 103.73 Td
+(Delivery & Logistics Margin: Service fee on doorstep delivery and express cold-chain) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 94.33 Td
+(coordination.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+429.00 83.05 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 83.13 Td
+(Value-Added Services \(Expansion\): Featured farm listings, export grading certification &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+436.00 73.73 Td
+(working-capital financing.) Tj
+ET
+BT
+/F1 7.5 Tf
+0.392 0.455 0.545 rg
+20.00 11.85 Td
+(FarmExpress Agricultural Marketplace  |  Business Model Canvas  |  Page 1 of 2) Tj
+ET
+BT
+/F1 7.5 Tf
+0.392 0.455 0.545 rg
+657.00 11.85 Td
+(Confidential - Product & Strategy Overview) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 11519 >>
+stream
+q
+1.00 w
+0.973 0.980 0.969 rg
+0.00 0.00 842.00 595.00 re f
+Q
+q
+1.00 w
+0.020 0.180 0.086 rg
+20.00 535.00 802.00 44.00 re f
+Q
+q
+1.00 w
+0.976 0.451 0.086 rg
+20.00 535.00 802.00 3.00 re f
+Q
+BT
+/F2 13.5 Tf
+1.000 1.000 1.000 rg
+34.00 555.93 Td
+(FARMEXPRESS - OPERATIONAL ARCHITECTURE & UNIT ECONOMICS) Tj
+ET
+BT
+/F2 8.5 Tf
+0.745 0.949 0.392 rg
+757.00 557.03 Td
+(Page 2 of 2) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+20.00 395.00 802.00 128.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+20.00 501.00 802.00 22.00 re B
+Q
+BT
+/F2 9.0 Tf
+0.059 0.090 0.165 rg
+30.00 508.62 Td
+(A. END-TO-END ORDER, FULFILMENT & PAYMENT LIFECYCLE) Tj
+ET
+q
+1.00 w
+0.996 0.953 0.780 rg
+0.706 0.325 0.035 RG
+34.00 443.00 138.00 48.00 re B
+Q
+BT
+/F2 8.5 Tf
+0.706 0.325 0.035 rg
+44.00 476.03 Td
+(1. PENDING) Tj
+ET
+BT
+/F1 7.5 Tf
+0.118 0.161 0.231 rg
+44.00 463.85 Td
+(Buyer places order) Tj
+ET
+BT
+/F1 7.2 Tf
+0.278 0.333 0.412 rg
+44.00 453.10 Td
+(Stock reserved atomically) Tj
+ET
+BT
+/F2 8.5 Tf
+0.392 0.455 0.545 rg
+175.00 465.03 Td
+(-->) Tj
+ET
+q
+1.00 w
+0.878 0.949 0.996 rg
+0.012 0.412 0.631 RG
+188.00 443.00 138.00 48.00 re B
+Q
+BT
+/F2 8.5 Tf
+0.012 0.412 0.631 rg
+198.00 476.03 Td
+(2. PAID) Tj
+ET
+BT
+/F1 7.5 Tf
+0.118 0.161 0.231 rg
+198.00 463.85 Td
+(Paystack / Offline) Tj
+ET
+BT
+/F1 7.2 Tf
+0.278 0.333 0.412 rg
+198.00 453.10 Td
+(Webhook + redirect verified) Tj
+ET
+BT
+/F2 8.5 Tf
+0.392 0.455 0.545 rg
+329.00 465.03 Td
+(-->) Tj
+ET
+q
+1.00 w
+0.878 0.906 1.000 rg
+0.263 0.220 0.792 RG
+342.00 443.00 138.00 48.00 re B
+Q
+BT
+/F2 8.5 Tf
+0.263 0.220 0.792 rg
+352.00 476.03 Td
+(3. CONFIRMED) Tj
+ET
+BT
+/F1 7.5 Tf
+0.118 0.161 0.231 rg
+352.00 463.85 Td
+(Farm accepts) Tj
+ET
+BT
+/F1 7.2 Tf
+0.278 0.333 0.412 rg
+352.00 453.10 Td
+(Harvest & packing started) Tj
+ET
+BT
+/F2 8.5 Tf
+0.392 0.455 0.545 rg
+483.00 465.03 Td
+(-->) Tj
+ET
+q
+1.00 w
+0.953 0.910 1.000 rg
+0.427 0.157 0.851 RG
+496.00 443.00 138.00 48.00 re B
+Q
+BT
+/F2 8.5 Tf
+0.427 0.157 0.851 rg
+506.00 476.03 Td
+(4. SHIPPED) Tj
+ET
+BT
+/F1 7.5 Tf
+0.118 0.161 0.231 rg
+506.00 463.85 Td
+(Carrier dispatched) Tj
+ET
+BT
+/F1 7.2 Tf
+0.278 0.333 0.412 rg
+506.00 453.10 Td
+(Tracking ID & ETA sent) Tj
+ET
+BT
+/F2 8.5 Tf
+0.392 0.455 0.545 rg
+637.00 465.03 Td
+(-->) Tj
+ET
+q
+1.00 w
+0.863 0.988 0.906 rg
+0.082 0.502 0.239 RG
+650.00 443.00 138.00 48.00 re B
+Q
+BT
+/F2 8.5 Tf
+0.082 0.502 0.239 rg
+660.00 476.03 Td
+(5. DELIVERED) Tj
+ET
+BT
+/F1 7.5 Tf
+0.118 0.161 0.231 rg
+660.00 463.85 Td
+(Buyer receives) Tj
+ET
+BT
+/F1 7.2 Tf
+0.278 0.333 0.412 rg
+660.00 453.10 Td
+(Verified reviews unlocked) Tj
+ET
+BT
+/F1 7.8 Tf
+0.200 0.255 0.333 rg
+34.00 420.60 Td
+(Safeguards:  \(1\) Unpaid PENDING orders auto-expire after 24h and restock inventory.  \(2\) Cancelled paid orders trigger direct Paystack API refunds with full Audit Log.) Tj
+ET
+BT
+/F1 7.8 Tf
+0.200 0.255 0.333 rg
+34.00 406.60 Td
+(Multi-farm Orders:  Single-farm orders are fulfilled directly by the owning farmer; mixed-farm orders are coordinated by FarmExpress Operations.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+20.00 38.00 262.00 345.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+20.00 361.00 262.00 22.00 re B
+Q
+q
+1.00 w
+0.082 0.502 0.239 rg
+26.00 365.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+29.50 370.35 Td
+(B1) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+47.00 369.53 Td
+(PLATFORM ROLE MATRIX) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 348.60 Td
+(Buyer & Industry Buyer) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 338.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 338.43 Td
+(Browse live produce catalog with search, category filter &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 329.03 Td
+(pagination.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 317.75 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 317.83 Td
+(Reserve stock at checkout with Home Delivery or Pickup Hub) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 308.43 Td
+(selection.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 297.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 297.23 Td
+(Pay via Paystack hosted checkout \(Card, Transfer, USSD\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 285.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 286.03 Td
+(Track live shipment timeline & review delivered produce.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 272.50 Td
+(Verified Farmer) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 262.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 262.33 Td
+(Upload KYC documents \(Farm Permit, CAC, National ID, TIN\).) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 251.05 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 251.13 Td
+(Create listings with direct device photo upload & stock) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 241.73 Td
+(counts.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 230.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 230.53 Td
+(Confirm paid orders, attach carrier tracking numbers &) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 221.13 Td
+(mark delivered.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.082 0.502 0.239 rg
+28.00 207.60 Td
+(Superadmin \(Demola Blaze\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 197.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 197.43 Td
+(Review uploaded KYC documents and approve/reject with) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 188.03 Td
+(notes.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 176.75 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 176.83 Td
+(Oversee all orders, mark offline payments & issue Paystack) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 167.43 Td
+(refunds.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.082 0.502 0.239 rg
+28.00 156.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 156.23 Td
+(Inspect immutable platform Audit Log & live revenue) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+35.00 146.83 Td
+(analytics.) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+290.00 38.00 262.00 345.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+290.00 361.00 262.00 22.00 re B
+Q
+q
+1.00 w
+0.012 0.412 0.631 rg
+296.00 365.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+299.50 370.35 Td
+(B2) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+317.00 369.53 Td
+(TARGET UNIT ECONOMICS) Tj
+ET
+BT
+/F2 7.8 Tf
+0.012 0.412 0.631 rg
+298.00 348.60 Td
+(Retail & Diaspora Basket \(Sample\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 338.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 338.43 Td
+(Average Order Value \(AOV\): NGN 35,000) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 327.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 327.23 Td
+(Platform Take-Rate \(10%\): NGN 3,500) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 315.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 316.03 Td
+(Delivery Coordination Margin: NGN 1,000) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 304.75 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 304.83 Td
+(Paystack Processing Fee \(~1.5% + NGN 100\): -NGN 625) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 293.55 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 293.63 Td
+(Net Contribution per Order: ~NGN 3,875 \(11.1% of GMV\)) Tj
+ET
+BT
+/F2 7.8 Tf
+0.012 0.412 0.631 rg
+298.00 280.10 Td
+(Industry / B2B Bulk Order \(Sample\)) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 269.85 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 269.93 Td
+(Average Bulk Order Value: NGN 450,000) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 258.65 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 258.73 Td
+(B2B Aggregation Fee \(7%\): NGN 31,500) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 247.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 247.53 Td
+(Paystack Fee \(Capped at NGN 2,000\): -NGN 2,000) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 236.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 236.33 Td
+(Quality & Dispatch Ops Cost: -NGN 4,500) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 225.05 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 225.13 Td
+(Net Contribution per B2B Order: ~NGN 25,000) Tj
+ET
+BT
+/F2 7.8 Tf
+0.012 0.412 0.631 rg
+298.00 211.60 Td
+(Key Operational SLAs) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 201.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 201.43 Td
+(KYC Verification Review Turnaround: < 12 hours) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 190.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 190.23 Td
+(Unpaid Stock Reservation Lock \(TTL\): 24 hours) Tj
+ET
+BT
+/F2 7.5 Tf
+0.012 0.412 0.631 rg
+298.00 178.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+305.00 179.03 Td
+(Farm Dispatch Confirmation after Payment: < 24 hours) Tj
+ET
+q
+1.00 w
+1.000 1.000 1.000 rg
+0.796 0.835 0.882 RG
+560.00 38.00 262.00 345.00 re B
+Q
+q
+0.60 w
+0.945 0.961 0.976 rg
+0.796 0.835 0.882 RG
+560.00 361.00 262.00 22.00 re B
+Q
+q
+1.00 w
+0.918 0.345 0.047 rg
+566.00 365.00 16.00 14.00 re f
+Q
+BT
+/F2 7.5 Tf
+1.000 1.000 1.000 rg
+569.50 370.35 Td
+(B3) Tj
+ET
+BT
+/F2 8.5 Tf
+0.059 0.090 0.165 rg
+587.00 369.53 Td
+(PRODUCT CATALOG & TECH STACK) Tj
+ET
+BT
+/F2 7.8 Tf
+0.918 0.345 0.047 rg
+568.00 348.60 Td
+(Core Verified Produce Categories) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 338.35 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 338.43 Td
+(Fruits: Fresh Green & Ripe Plantain Bunches.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 327.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 327.23 Td
+(Roots & Tubers: Fresh Cassava Tubers, Puna White Yams.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 315.95 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 316.03 Td
+(Grains: Yellow Maize, Raw Fermented Cocoa Beans & Pods.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 304.75 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 304.83 Td
+(Vegetables & Spices: Roma Tomatoes, Dried Red Chili, Split) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 295.43 Td
+(Ginger.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 284.15 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 284.23 Td
+(Legumes: Raw Shelled West African Groundnuts.) Tj
+ET
+BT
+/F2 7.8 Tf
+0.918 0.345 0.047 rg
+568.00 270.70 Td
+(Production Technology Stack) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 260.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 260.53 Td
+(Frontend: React 19, TypeScript, Vite 7, Tailwind CSS 4.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 249.25 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 249.33 Td
+(Backend API: Node.js, Express 5, Zod 4 validation, JWT +) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 239.93 Td
+(bcrypt.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 228.65 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 228.73 Td
+(Database: Neon Serverless PostgreSQL + Prisma 6) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 219.33 Td
+(migrations.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 208.05 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 208.13 Td
+(Quality & CI: Automated API test suite + GitHub Actions) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 198.73 Td
+(CI.) Tj
+ET
+BT
+/F2 7.5 Tf
+0.918 0.345 0.047 rg
+568.00 187.45 Td
+(-) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 187.53 Td
+(Deployment: Full-stack Vercel \(Frontend + /api serverless\)) Tj
+ET
+BT
+/F1 7.4 Tf
+0.118 0.161 0.231 rg
+575.00 178.13 Td
+(& Render.) Tj
+ET
+BT
+/F1 7.5 Tf
+0.392 0.455 0.545 rg
+20.00 11.85 Td
+(FarmExpress Agricultural Marketplace  |  Business Model Canvas  |  Page 2 of 2) Tj
+ET
+BT
+/F1 7.5 Tf
+0.392 0.455 0.545 rg
+727.00 11.85 Td
+(Generated October 2026) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Type /Catalog /Pages 3 0 R >>
+endobj
+9 0 obj
+<< /Title (FarmExpress Business Model Canvas) /Author (FarmExpress) /Subject (Agricultural Marketplace Business Model Canvas) /Creator (FarmExpress) >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000106 00000 n 
+0000000208 00000 n 
+0000000271 00000 n 
+0000018208 00000 n 
+0000018344 00000 n 
+0000029916 00000 n 
+0000030052 00000 n 
+0000030101 00000 n 
+trailer
+<< /Size 10 /Root 8 0 R /Info 9 0 R >>
+startxref
+30268
+%%EOF
